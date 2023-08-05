@@ -8,11 +8,13 @@ import '../models/responses/list_product_response_model.dart';
 
 class ProductRemoteDatasource {
   Future<Either<String, ListProductResponseModel>> getAllProduct() async {
-    final response =
-        await http.get(Uri.parse('${GlobalVariables.baseUrl}/api/products'));
+    print(">>> test : ${GlobalVariables.baseUrl}/api/products?populate=* ");
+    final response = await http
+        .get(Uri.parse('${GlobalVariables.baseUrl}/api/products?populate=*'));
 
     if (response.statusCode == 200) {
-      return Right(ListProductResponseModel.fromRawJson(response.body));
+      var data = jsonDecode(response.body);
+      return Right(ListProductResponseModel.fromJson(data));
     } else {
       return const Left('proses gagal');
     }

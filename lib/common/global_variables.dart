@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
 
 class GlobalVariables {
-  static const baseUrl = 'http://103.150.93.77:1339';
+  // static const baseUrl = 'http://103.150.93.77:1339';
+  // static const baseUrl = 'http://localhost:1337';
+  static const baseUrl = 'http://103.150.190.45:1337';
   static const List<Map<String, String>> categoryImages = [
     {
       'title': 'Mobiles',
-      'image': 'assets/images/mobiles.jpeg',
+      'image': 'assets/images/images/mobiles.jpeg',
     },
     {
       'title': 'Essentials',
-      'image': 'assets/images/essentials.jpeg',
+      'image': 'assets/images/images/essentials.jpeg',
     },
     {
       'title': 'Appliances',
-      'image': 'assets/images/appliances.jpeg',
+      'image': 'assets/images/images/appliances.jpeg',
     },
     {
       'title': 'Books',
-      'image': 'assets/images/books.jpeg',
+      'image': 'assets/images/images/books.jpeg',
     },
     {
       'title': 'Fashion',
-      'image': 'assets/images/fashion.jpeg',
+      'image': 'assets/images/images/fashion.jpeg',
     },
   ];
 

@@ -1,3 +1,4 @@
+import 'package:ecommerce_mobile/common/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,6 +47,8 @@ class _ListProductWidgetState extends State<ListProductWidget> {
             ),
             itemBuilder: (context, index) {
               final Product product = state.data.data![index];
+              print(
+                  ">>> data : ${product.attributes?.images.data?.attributes?.url}");
               return Card(
                 elevation: 2,
                 shadowColor: const Color(0xffEE4D2D),
@@ -56,19 +59,18 @@ class _ListProductWidgetState extends State<ListProductWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Hero(
-                      tag: product.attributes!.image!,
-                      child: SizedBox(
-                        width: 150,
-                        height: 120,
-                        child: Image.network(product.attributes!.image!),
-                      ),
+                    SizedBox(
+                      width: 150,
+                      height: 120,
+                      // child: Image.network(product.attributes!.image!),
+                      child: Image.network(
+                          "${GlobalVariables.baseUrl}${product.attributes.images.data?.attributes.url}"),
                     ),
                     const SizedBox(
                       height: 8,
                     ),
                     Text(
-                      product.attributes!.price!.toString(),
+                      product.attributes.price.toString(),
                       style: const TextStyle(
                         color: const Color(0xffEE4D2D),
                         fontSize: 20,

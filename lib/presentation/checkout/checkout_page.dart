@@ -55,7 +55,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
                         return ListTile(
                           leading: CircleAvatar(
                               backgroundImage: NetworkImage(
-                                  dataSet.elementAt(index).attributes!.image!)),
+                            // dataSet.elementAt(index).attributes!.image!,
+                            dataSet
+                                .elementAt(index)
+                                .attributes!
+                                .images!
+                                .data!
+                                .attributes
+                                .url
+                                .toString(),
+                          )),
                           title: Text(
                             dataSet.elementAt(index).attributes!.name!,
                             style: const TextStyle(fontSize: 12),
@@ -103,26 +112,26 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xffEE4D2D)),
                   onPressed: () {
-                    final total = state.items
-                        .fold(0, (sum, item) => sum + item.attributes!.price!);
-                    final data = Data(
-                      items: state.items
-                          .map((e) => Item(
-                              id: e.id!,
-                              productName: e.attributes!.name!,
-                              price: e.attributes!.price!,
-                              qty: 1))
-                          .toList(),
-                      totalPrice: total,
-                      deliveryAddress: addressController.text,
-                      courierName: 'JNE',
-                      shippingCost: 22000,
-                      statusOrder: 'waitingPayment',
-                    );
-                    final requestModel = OrderRequestModel(data: data);
-                    context
-                        .read<OrderBloc>()
-                        .add(OrderEvent.doOrder(requestModel));
+                    // final total = state.items
+                    //     .fold(0, (sum, item) => sum + item.attributes!.price!);
+                    // final data = Data(
+                    //   items: state.items
+                    //       .map((e) => Item(
+                    //           id: e.id!,
+                    //           productName: e.attributes!.name!,
+                    //           price: e.attributes!.price!,
+                    //           qty: 1))
+                    //       .toList(),
+                    //   totalPrice: total,
+                    //   deliveryAddress: addressController.text,
+                    //   courierName: 'JNE',
+                    //   shippingCost: 22000,
+                    //   statusOrder: 'waitingPayment',
+                    // );
+                    // final requestModel = OrderRequestModel(data: data);
+                    // context
+                    //     .read<OrderBloc>()
+                    //     .add(OrderEvent.doOrder(requestModel));
                   },
                   child: const Text(
                     'Bayar',

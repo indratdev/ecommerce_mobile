@@ -104,8 +104,8 @@ class _CartPageState extends State<CartPage> {
                 BlocBuilder<CheckoutBloc, CheckoutState>(
                   builder: (context, state) {
                     if (state is CheckoutLoaded) {
-                      final total = state.items.fold(
-                          0, (sum, item) => sum + item.attributes!.price!);
+                      final total = state.items
+                          .fold(0, (sum, item) => sum + item.attributes.price);
                       return Text(
                         'Rp $total',
                         style: const TextStyle(
@@ -177,7 +177,9 @@ class _CartPageState extends State<CartPage> {
                             child: Row(
                               children: [
                                 Image.network(
-                                  dataSet.elementAt(index).attributes!.image!,
+                                  // dataSet.elementAt(index).attributes!.image!,
+
+                                  "${GlobalVariables.baseUrl}${dataSet.elementAt(index).attributes.images.data!.attributes.url}",
                                   fit: BoxFit.fitWidth,
                                   height: 135,
                                   width: 135,
@@ -201,7 +203,8 @@ class _CartPageState extends State<CartPage> {
                                       padding: const EdgeInsets.only(
                                           left: 10, top: 5),
                                       child: Text(
-                                        'Rp. ${dataSet.elementAt(index).attributes!.price}',
+                                        // 'Rp. ${dataSet.elementAt(index).attributes!.price}',
+                                        "0",
                                         style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
